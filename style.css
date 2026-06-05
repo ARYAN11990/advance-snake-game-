@@ -1,0 +1,144 @@
+:root {
+    --primary: #4CAF50;
+    --accent: #FFD700;
+    --danger: #ff4757;
+    --dark: #1a1a2e;
+    --font-main: 'Fredoka One', cursive;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: var(--dark);
+    font-family: var(--font-main);
+    user-select: none;
+    color: #333;
+}
+
+canvas {
+    display: block;
+    background: radial-gradient(circle, #232338 0%, #151520 100%);
+    cursor: crosshair; /* Changes cursor for game feel */
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+}
+
+/* HUD */
+#hud {
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 20px; height: 100%; box-sizing: border-box; pointer-events: none;
+}
+
+.top-bar {
+    display: flex; gap: 15px; pointer-events: auto; flex-wrap: wrap;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.6); color: white; padding: 10px 20px;
+    border-radius: 25px; font-size: 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* BIGGER POWERUPS */
+#powerups-hud {
+    position: absolute; bottom: 40px; left: 40px;
+    display: flex; gap: 20px;
+}
+
+.p-icon {
+    width: 70px; height: 70px; /* Increased size */
+    background: rgba(0, 0, 0, 0.7);
+    border: 4px solid white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 35px; color: white;
+    animation: pulse 1s infinite;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#pauseBtn {
+    pointer-events: auto; position: absolute; top: 20px; right: 20px;
+    font-size: 1.5rem; width: 60px; height: 60px;
+    padding: 0; display: flex; align-items: center; justify-content: center;
+    z-index: 100; border-radius: 15px;
+}
+
+/* MENUS */
+.panel {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    padding: 30px; border-radius: 20px; text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    border: 5px solid var(--primary);
+    pointer-events: auto; min-width: 350px;
+    animation: popIn 0.3s; z-index: 50;
+}
+
+.hidden { display: none !important; }
+h1 { font-size: 3rem; margin: 0 0 10px 0; color: #333; }
+h2 { color: #333; }
+
+/* Input Styling */
+.input-group { margin-bottom: 20px; }
+input[type="text"] {
+    width: 80%; padding: 15px; font-size: 1.2rem;
+    border: 3px solid #ccc; border-radius: 10px;
+    font-family: var(--font-main); text-align: center;
+    outline: none; transition: 0.2s;
+}
+input[type="text"]:focus { border-color: var(--primary); }
+
+button {
+    font-family: var(--font-main); border: none; cursor: pointer;
+    transition: all 0.1s; outline: none;
+}
+button:active { transform: scale(0.95); }
+
+.big-btn {
+    display: block; width: 100%; padding: 15px; margin: 10px 0;
+    font-size: 1.4rem; border-radius: 12px; color: white;
+}
+.start-btn { background: var(--primary); box-shadow: 0 5px 0 #2E7D32; }
+.back-btn { background: var(--danger); box-shadow: 0 5px 0 #c0392b; }
+
+.icon-btn {
+    background: #2196F3; color: white; padding: 10px 20px;
+    border-radius: 10px; font-size: 1rem; margin: 5px;
+}
+
+.mode-select { display: flex; gap: 10px; justify-content: center; margin-bottom: 15px; }
+.mode-btn {
+    flex: 1; background: #e0e0e0; padding: 10px;
+    border-radius: 10px; color: #666; box-shadow: 0 4px 0 #bbb;
+}
+.mode-btn.selected {
+    background: var(--accent); color: #333; transform: translateY(-2px);
+    box-shadow: 0 4px 0 #e6c200; border: 2px solid white;
+}
+
+.skins-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin: 20px 0; max-height: 250px; overflow-y: auto;
+}
+.skin-item { padding: 10px; border: 3px solid #ddd; border-radius: 10px; cursor: pointer; background: white; }
+.skin-item.active { border-color: var(--primary); background: #e8f5e9; }
+.skin-item.locked { opacity: 0.6; background: #eee; }
+
+#scoreList li { list-style: none; margin: 5px 0; font-size: 1.1rem; border-bottom: 1px solid #ccc; padding: 5px; }
+
+@keyframes popIn {
+    from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}

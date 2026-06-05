@@ -1,0 +1,180 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake.io Lite</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="ui-layer">
+        <div id="hud" class="hidden">
+            <div class="top-bar">
+                <div class="stat-box">Score: <span id="scoreDisplay">0</span></div>
+                <div class="stat-box">Kills: <span id="killDisplay">0</span></div>
+                <div class="stat-box">Coins: <span id="coinDisplay">0</span></div>
+                <div class="stat-box">Rank: <span id="rankDisplay">1/10</span></div>
+                <div class="stat-box" id="timeBox">Time: <span id="timeDisplay">--:--</span></div>
+            </div>
+            
+            <div id="powerups-hud">
+                <div id="mag-hud" class="p-icon hidden">🧲</div>
+                <div id="spd-hud" class="p-icon hidden">⚡</div>
+            </div>
+
+            <button id="pauseBtn" class="icon-btn">⏸</button>
+        </div>
+
+        <div id="mainMenu" class="panel">
+            <h1>SNAKE <span style="color:#FFD700">IO</span></h1>
+            <div class="mode-select">
+                <button class="mode-btn selected" onclick="selectMode('classic')">
+                    <strong>Classic</strong><br><small>Endless Fun</small>
+                </button>
+                <button class="mode-btn" onclick="selectMode('survival')">
+                    <strong>Survival</strong><br><small>Last One Standing</small>
+                </button>
+                <button class="mode-btn" onclick="selectMode('time')">
+                    <strong>Timer</strong><br><small>2 Min Rush</small>
+                </button>
+            </div>
+            <button class="big-btn start-btn" onclick="startGame()">PLAY NOW</button>
+            <div class="menu-footer">
+                <button class="icon-btn" onclick="openShop()">🛒 Skins</button>
+                <button class="icon-btn" onclick="openLeaderboard()">🏆 Rank</button>
+            </div>
+        </div>
+
+        <div id="shopModal" class="panel hidden">
+            <h2>Skin Shop</h2>
+            <div class="balance">Coins: <span id="shopBalance">0</span></div>
+            <div id="skinsContainer" class="skins-grid"></div>
+            <button class="big-btn back-btn" onclick="closeShop()">Back</button>
+        </div>
+
+        <div id="leaderboardModal" class="panel hidden">
+            <h2>High Scores</h2>
+            <ul id="scoreList"></ul>
+            <button class="big-btn back-btn" onclick="closeLeaderboard()">Back</button>
+        </div>
+
+        <div id="gameOverScreen" class="panel hidden">
+            <h2 id="goTitle">GAME OVER</h2>
+            <p>Score: <span id="finalScore">0</span></p>
+            <p>Kills: <span id="finalKills">0</span></p>
+            <p>Total Coins: <span id="finalCoins">0</span></p>
+            <button class="big-btn start-btn" onclick="restartGame()">Play Again</button>
+            <button class="big-btn back-btn" onclick="goToMenu()">Menu</button>
+        </div>
+
+        <div id="pauseScreen" class="panel hidden">
+            <h2>PAUSED</h2>
+            <button class="big-btn" onclick="togglePause()">Resume</button>
+            <button class="big-btn back-btn" onclick="goToMenu()">Quit</button>
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+    <script src="shop.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake.io Lite</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="ui-layer">
+        <div id="hud" class="hidden">
+            <div class="top-bar">
+                <div class="stat-box">Score: <span id="scoreDisplay">0</span></div>
+                <div class="stat-box">Kills: <span id="killDisplay">0</span></div>
+                <div class="stat-box">Coins: <span id="coinDisplay">0</span></div>
+                <div class="stat-box">Rank: <span id="rankDisplay">1/10</span></div>
+                <div class="stat-box" id="timeBox">Time: <span id="timeDisplay">--:--</span></div>
+            </div>
+            
+            <div id="powerups-hud">
+                <div id="mag-hud" class="p-icon hidden">🧲</div>
+                <div id="spd-hud" class="p-icon hidden">⚡</div>
+            </div>
+
+            <button id="pauseBtn" class="icon-btn">⏸</button>
+        </div>
+
+        <div id="mainMenu" class="panel">
+            <h1>SNAKE <span style="color:#FFD700">IO</span></h1>
+            
+            <div class="input-group">
+                <input type="text" id="playerNameInput" placeholder="Enter Your Name" maxlength="12" value="">
+            </div>
+
+            <div class="mode-select">
+                <button class="mode-btn selected" onclick="selectMode('classic')">
+                    <strong>Classic</strong><br><small>Endless</small>
+                </button>
+                <button class="mode-btn" onclick="selectMode('survival')">
+                    <strong>Survival</strong><br><small>Last Man</small>
+                </button>
+                <button class="mode-btn" onclick="selectMode('time')">
+                    <strong>Timer</strong><br><small>2 Min</small>
+                </button>
+            </div>
+            <button class="big-btn start-btn" onclick="startGame()">PLAY NOW</button>
+            <div class="menu-footer">
+                <button class="icon-btn" onclick="openShop()">🛒 Skins</button>
+                <button class="icon-btn" onclick="openLeaderboard()">🏆 Rank</button>
+            </div>
+        </div>
+
+        <div id="shopModal" class="panel hidden">
+            <h2>Skin Shop</h2>
+            <div class="balance">Coins: <span id="shopBalance">0</span></div>
+            <div id="skinsContainer" class="skins-grid"></div>
+            <button class="big-btn back-btn" onclick="closeShop()">Back</button>
+        </div>
+
+        <div id="leaderboardModal" class="panel hidden">
+            <h2>High Scores</h2>
+            <ul id="scoreList"></ul>
+            <button class="big-btn back-btn" onclick="closeLeaderboard()">Back</button>
+        </div>
+
+        <div id="gameOverScreen" class="panel hidden">
+            <h2 id="goTitle">GAME OVER</h2>
+            <p>Score: <span id="finalScore">0</span></p>
+            <p>Kills: <span id="finalKills">0</span></p>
+            <p>Coins: <span id="finalCoins">0</span></p>
+            <button class="big-btn start-btn" onclick="restartGame()">Play Again</button>
+            <button class="big-btn back-btn" onclick="goToMenu()">Menu</button>
+        </div>
+
+        <div id="pauseScreen" class="panel hidden">
+            <h2>PAUSED</h2>
+            <button class="big-btn" onclick="togglePause()">Resume</button>
+            <button class="big-btn back-btn" onclick="goToMenu()">Quit</button>
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+    <script src="shop.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
