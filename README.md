@@ -46,8 +46,10 @@ An enhanced version of the classic Snake Game built using HTML, CSS, and JavaScr
 ```text
 ├── index.html
 ├── style.css
-├── script.js
+├── game.js
 └── shop.js
+└── leaderboar.js
+
 ```
 
 ## 💡 What I Learned
